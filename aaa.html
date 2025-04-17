@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusShop - Future of Shopping (2040)</title>
+    <style>
+        /* Futuristic Global Styles */
+        :root {
+            --primary: #00f7ff;
+            --secondary: #ff00f7;
+            --dark: #0a0a1a;
+            --light: #e0e0ff;
+            --accent: #7b00ff;
+            --glass: rgba(20, 20, 40, 0.7);
+            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            --neon-glow-secondary: 0 0 10px var(--secondary), 0 0 20px var(--secondary), 0 0 30px var(--secondary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', 'Arial Narrow', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(123, 0, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 247, 255, 0.15) 0%, transparent 30%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            text-shadow: var(--neon-glow);
+        }
+
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            box-shadow: var(--neon-glow-secondary);
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+            min-height: calc(100vh - 160px);
+        }
+
+        /* Page Transition Animation */
+        .page {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page Styles */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: var(--glass);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 247, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.8);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+        }
+
+        /* Shop Page Styles */
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--glass);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .product-info p {
+            color: var(--light);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .add-to-cart {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Cart Page Styles */
+        .cart-container {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .cart-items {
+            flex: 2;
+        }
+
+        .cart-summary {
+            flex: 1;
+            background: var(--glass);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .cart-item {
+            display: flex;
+            background: var(--glass);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cart-item-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-item-title {
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .cart-item-price {
+            font-weight: bold;
+        }
+
+        .cart-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .remove-item {
+            background: transparent;
+            color: #ff5555;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            color: #ff0000;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .summary-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 2rem;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem;
+            background: var(--glass);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .empty-cart p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        /* About Page Styles */
+        .about-section {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .about-section p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.2);
+        }
+
+        .member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--dark);
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            position: relative;
+        }
+
+        .member-image::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Page Styles */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 247, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            flex: 2;
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(10, 10, 30, 0.5);
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.8);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 247, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cart-container, .contact-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Floating Animations */
+        .float-1 {
+            position: fixed;
+            top: 20%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(0, 247, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: float 15s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .float-2 {
+            position: fixed;
+            bottom: 10%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(123, 0, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(30px);
+            animation: float 20s ease-in-out infinite reverse;
+            z-index: -1;
+        }
+
+        .float-3 {
+            position: fixed;
+            top: 60%;
+            left: 30%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255, 0, 247, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(15px);
+            animation: float 12s ease-in-out infinite 2s;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 30px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--glass);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 1rem;
+            max-width: 300px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            border-color: #00ff88;
+        }
+
+        .notification.error {
+            border-color: #ff5555;
+        }
+
+        .notification h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .notification p {
+            font-size: 0.9rem;
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 30, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loader.active {
+            display: flex;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 247, 255, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            margin-top: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="float-1"></div>
+    <div class="float-2"></div>
+    <div class="float-3"></div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo" onclick="showPage('home')">
+            <span class="logo-icon"></span>
+            <span>NexusShop</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li>
+                    <div class="cart-icon" onclick="showPage('cart')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <div class="cart-count">0</div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page">
+            <section class="hero">
+                <h1>Welcome to the Future of Shopping</h1>
+                <p>Experience commerce redefined with our 2040 collection. Quantum-powered, AI-curated, and holographically delivered to your doorstep.</p>
+                <a href="#" class="btn" onclick="showPage('shop')">Explore Products</a>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <h3>Quantum Delivery</h3>
+                    <p>Our patented quantum entanglement technology delivers products instantly across any distance. Order now, receive now.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AI Personalization</h3>
+                    <p>Our neural network learns your preferences to suggest products you'll love before you even know you want them.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Holographic Preview</h3>
+                    <p>Project full-scale 3D holograms of products in your space before purchasing. See exactly how it fits your life.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Shop Page -->
+        <div id="shop" class="page" style="display: none;">
+            <div class="shop-header">
+                <h2>Future Products</h2>
+                <div class="search">
+                    <input type="text" placeholder="Search products..." class="form-control">
+                </div>
+            </div>
+
+            <div class="products">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart" class="page" style="display: none;">
+            <h2>Your Shopping Cart</h2>
+            <div class="cart-container">
+                <div class="cart-items">
+                    <!-- Cart items will be dynamically inserted here -->
+                    <div class="empty-cart">
+                        <h3>Your cart is empty</h3>
+                        <p>Explore our futuristic products and add something special to your cart.</p>
+                        <a href="#" class="btn" onclick="showPage('shop')">Continue Shopping</a>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <h3 class="summary-title">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span class="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>FREE</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Quantum Tax</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span class="total">$0.00</span>
+                    </div>
+                    <button class="btn checkout-btn" disabled>Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page" style="display: none;">
+            <section class="about-section">
+                <h2>About NexusShop</h2>
+                <p>Founded in 2035, NexusShop is the world's first quantum e-commerce platform. We leverage cutting-edge technology to redefine what online shopping means in the 21st century.</p>
+                <p>Our mission is to bridge the gap between imagination and reality, using advanced holographic displays, AI personalization, and instant quantum delivery to create a shopping experience that feels like magic.</p>
+                <p>With over 5 million satisfied customers across the solar system, we're proud to be at the forefront of the retail revolution.</p>
+
+                <div class="team">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member">
+                        </div>
+                        <h3 class="member-name">Dr. Elena Quantum</h3>
+                        <p class="member-role">Founder & CEO</p>
+                        <p>Quantum physicist turned entrepreneur, Elena pioneered the quantum delivery technology that powers our platform.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member">
+                        </div>
+                        <h3 class="member-name">Mark Hologram</h3>
+                        <p class="member-role">CTO</p>
+                        <p>Holographic interface expert who developed our immersive 3D product visualization system.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member">
+                        </div>
+                        <h3 class="member-name">AI-7</h3>
+                        <p class="member-role">Chief AI Officer</p>
+                        <p>Our self-improving neural network that personalizes every customer's shopping experience.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page" style="display: none;">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Quantum Communication</h3>
+                            <p>+1 (555) QNT-2040</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Holographic Mail</h3>
+                            <p>contact@nexusshop.quantum</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Quantum Headquarters</h3>
+                            <p>2040 Future Avenue, Neo York, NY 10020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Quantum Mail Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Transmit Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NexusShop</h3>
+                <p>The future of shopping, today. Quantum-powered e-commerce for the 21st century.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+                    <li><a href="#" onclick="showPage('about')">About</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Quantum Warranty</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Quantum Ethics</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2040 NexusShop. All rights reserved. A subsidiary of Quantum Retail Group.</p>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification">
+        <h4>Notification</h4>
+        <p>This is a notification message.</p>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Quantum Processing...</div>
+    </div>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "Quantum Smartwatch",
+                description: "Tracks time across multiple dimensions with 99.9% accuracy.",
+                price: 499.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965300.png"
+            },
+            {
+                id: 2,
+                name: "Holographic Display",
+                description: "Project 3D holograms in your living space with 8K resolution.",
+                price: 1299.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965278.png"
+            },
+            {
+                id: 3,
+                name: "Neural Headset",
+                description: "Control devices with your thoughts and boost cognitive abilities.",
+                price: 799.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965297.png"
+            },
+            {
+                id: 4,
+                name: "Self-Charging Phone",
+                description: "Never plug in again with our patented quantum energy technology.",
+                price: 899.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965270.png"
+            },
+            {
+                id: 5,
+                name: "Gravity Boots",
+                description: "Walk on walls and ceilings with adjustable gravity settings.",
+                price: 599.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965285.png"
+            },
+            {
+                id: 6,
+                name: "AI Personal Assistant",
+                description: "Your own digital companion that learns and grows with you.",
+                price: 299.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965303.png"
+            },
+            {
+                id: 7,
+                name: "Teleportation Beacon",
+                description: "Set your destination and arrive instantly (sold in pairs).",
+                price: 2499.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965294.png"
+            },
+            {
+                id: 8,
+                name: "Memory Implant",
+                description: "Store and recall memories with perfect clarity.",
+                price: 1599.99,
+                image: "https://cdn-icons-png.flaticon.com/512/2965/2965288.png"
+            }
+        ];
+
+        // Cart Data
+        let cart = [];
+
+        // DOM Elements
+        const pages = document.querySelectorAll('.page');
+        const cartCount = document.querySelector('.cart-count');
+        const productsContainer = document.querySelector('.products');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const subtotalElement = document.querySelector('.subtotal');
+        const totalElement = document.querySelector('.total');
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const notification = document.querySelector('.notification');
+        const loader = document.querySelector('.loader');
+        const contactForm = document.getElementById('contactForm');
+
+        // Initialize the app
+        function init() {
+            renderProducts();
+            loadCart();
+            setupEventListeners();
+        }
+
+        // Render products to the shop page
+        function renderProducts() {
+            productsContainer.innerHTML = '';
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'product-card';
+                productElement.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-price">
+                            <span class="price">$${product.price.toFixed(2)}</span>
+                            <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.appendChild(productElement);
+            });
+        }
+
+        // Load cart from localStorage
+        function loadCart() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartUI();
+            }
+        }
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            // Update cart count
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = count;
+
+            // Update cart page
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <h3>Your cart is empty</h3>
+                        <p>Explore our futuristic products and add something special to your cart.</p>
+                        <a href="#" class="btn" onclick="showPage('shop')">Continue Shopping</a>
+                    </div>
+                `;
+                checkoutBtn.disabled = true;
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach(item => {
+                    const product = products.find(p => p.id === item.id);
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-header">
+                                <h3 class="cart-item-title">${product.name}</h3>
+                                <span class="cart-item-price">$${(product.price * item.quantity).toFixed(2)}</span>
+                            </div>
+                            <div class="cart-item-footer">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn minus" data-id="${product.id}">-</button>
+                                    <span class="quantity">${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-id="${product.id}">+</button>
+                                </div>
+                                <button class="remove-item" data-id="${product.id}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+
+                // Calculate totals
+                const subtotal = cart.reduce((total, item) => {
+                    const product = products.find(p => p.id === item.id);
+                    return total + (product.price * item.quantity);
+                }, 0);
+
+                const tax = subtotal * 0.1; // 10% tax
+                const total = subtotal + tax;
+
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+                checkoutBtn.disabled = false;
+            }
+        }
+
+        // Add product to cart
+        function addToCart(productId) {
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1 });
+            }
+            
+            saveCart();
+            showNotification('success', 'Item added to cart', `${products.find(p => p.id === productId).name} has been added to your cart.`);
+        }
+
+        // Remove product from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            showNotification('error', 'Item removed', 'The item has been removed from your cart.');
+        }
+
+        // Update product quantity in cart
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    saveCart();
+                }
+            }
+        }
+
+        // Show notification
+        function showNotification(type, title, message) {
+            notification.className = `notification ${type}`;
+            notification.querySelector('h4').textContent = title;
+            notification.querySelector('p').textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Show loader
+        function showLoader(show) {
+            if (show) {
+                loader.classList.add('active');
+            } else {
+                loader.classList.remove('active');
+            }
+        }
+
+        // Show page
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.style.display = page.id === pageId ? 'block' : 'none';
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // If showing cart page, update it
+            if (pageId === 'cart') {
+                updateCartUI();
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Add to cart buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    addToCart(productId);
+                }
+                
+                // Quantity controls
+                if (e.target.classList.contains('quantity-btn')) {
+                    const productId = parseInt(e.target.parentElement.getAttribute('data-id'));
+                    const isPlus = e.target.classList.contains('plus');
+                    updateQuantity(productId, isPlus ? 1 : -1);
+                }
+                
+                // Remove item
+                if (e.target.classList.contains('remove-item') || e.target.parentElement.classList.contains('remove-item')) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.parentElement;
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    removeFromCart(productId);
+                }
+            });
+            
+            // Contact form submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                showLoader(true);
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    showLoader(false);
+                    showNotification('success', 'Message Sent', 'Your message has been transmitted successfully. We will respond via quantum mail within 24 hours.');
+                    contactForm.reset();
+                }, 2000);
+            });
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', function() {
+                showLoader(true);
+                
+                // Simulate checkout process
+                setTimeout(() => {
+                    showLoader(false);
+                    cart = [];
+                    saveCart();
+                    showNotification('success', 'Order Placed', 'Your order has been quantum-entangled for instant delivery!');
+                    showPage('home');
+                }, 3000);
+            });
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
